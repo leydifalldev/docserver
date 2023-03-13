@@ -11,6 +11,6 @@ services:
       - "../content:/usr/src/app/content"
       - "../assets:/usr/src/app/assets"
       - "./config:/usr/src/app/config"
-      - "../public:/usr/src/app/public:rw"
+      - "../docs:/usr/src/app/public:rw"
       - "./netlify.toml:/usr/src/app/netlify.toml"
       - "./package.json:/usr/src/app/package.json"
