@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "docker-compose -f server/docker-compose.yml up",
     "start": "docker-compose -f server/docker-compose.yml up -d",
-    "build": "docker-compose -f server/build.yml up",
+    "build": "docker-compose -f server/build.yml up --force-recreate",
     "production": "docker-compose up"
   }
 }

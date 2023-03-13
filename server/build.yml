@@ -9,6 +9,7 @@ services:
     user: "root"
     volumes:
       - "../content:/usr/src/app/content"
+      - "./layouts:/usr/src/app/layouts"
       - "../assets:/usr/src/app/assets"
       - "./config:/usr/src/app/config"
       - "../docs:/usr/src/app/public:rw"
