@@ -1,0 +1,14 @@
+{
+  "name": "docserver",
+  "version": "1.0.1",
+  "main": "index.js",
+  "repository": "https://gitlab.com/protobox/docserver.git",
+  "author": "Doudou <doudou.leydi.fall@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "docker-compose -f server/docker-compose.yml up",
+    "start": "docker-compose -f server/docker-compose.yml up -d",
+    "build": "docker-compose -f server/build.yml up",
+    "production": "docker-compose up"
+  }
+}

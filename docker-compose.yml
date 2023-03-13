@@ -1,0 +1,8 @@
+version: '3.9'
+
+services:
+  docbuilder:
+    build: .
+    user: "root"
+    ports:
+      - '80:80'

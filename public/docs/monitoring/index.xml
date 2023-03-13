@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Monitoring on</title><link>/docs/monitoring/</link><description>Recent content in Monitoring on</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0000</lastBuildDate><atom:link href="/docs/monitoring/index.xml" rel="self" type="application/rss+xml"/><item><title>Monitor</title><link>/docs/monitoring/monitor/</link><pubDate>Tue, 06 Oct 2020 08:48:45 +0000</pubDate><guid>/docs/monitoring/monitor/</guid><description>1. Présentation #
+Le monitoring est essentiel à toute infrastructure IT afin de detecter ou de prévoir d&amp;rsquo;éventuels incidents. Ce chapitre traite la surveillance matériel et logiciel de l&amp;rsquo;infrastructure et des outils utilisés pour assurer le bon fonctionnement du matériel.
+2. Architecture #
+2.1. Inventaire #
+Le monitoring est assuré par le groupe de serveurs nat_gateway_pool comportant 2 serveurs intel nuc celeron
+3. Networking #
+4. Applications #
+Prometheus Grafana Consul wpe-webkit-mir-kiosk (Headless Browser) Wayland 5.</description></item><item><title>Surveillance matériel</title><link>/docs/monitoring/hardware/</link><pubDate>Wed, 28 Dec 2022 21:48:04 +0100</pubDate><guid>/docs/monitoring/hardware/</guid><description>1. Présentation #
+La surveillance matériel est géré par un des serveurs de nat_gateway_pool. Diverses données sont recueillies sur chaque serveur du cluster (CPU, RAM, Disques, Réseaux etc) et centralisées sur le serveur de monitoring. Ces données sont utilisés par Prometheus pour stocker, traiter, servir ces données et Grafana pour la visualisation.
+2. Architecture #
+3. Node-exporter #
+Nodeexporter est un agent qui permet d&amp;rsquo;exposer les métriques d&amp;rsquo;une machine. C&amp;rsquo;est une API qui effectue des requêtes sur le host puis s&amp;rsquo;interfaçe sous forme d&amp;rsquo;API Rest afin de synchroniser les données avec d&amp;rsquo;autres système telque Prometheus</description></item><item><title>Surveillance applicative</title><link>/docs/monitoring/services/</link><pubDate>Wed, 28 Dec 2022 21:48:04 +0100</pubDate><guid>/docs/monitoring/services/</guid><description>1. Introduction #</description></item></channel></rss>

@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  docserver:
+    container_name: doc
+    build: .
+    command: npm run start
+    volumes:
+      - '../content:/usr/src/app/content'
+      - '../assets:/usr/src/app/assets'
+      - './config:/usr/src/app/config'
+      - './layouts:/usr/src/app/layouts'
+      - './netlify.toml:/usr/src/app/netlify.toml'
+    ports:
+      - '1313:1313'
+    restart: always

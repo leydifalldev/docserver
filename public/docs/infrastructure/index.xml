@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Infrastructure on</title><link>/docs/infrastructure/</link><description>Recent content in Infrastructure on</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0000</lastBuildDate><atom:link href="/docs/infrastructure/index.xml" rel="self" type="application/rss+xml"/><item><title>Architecture</title><link>/docs/infrastructure/architecture/</link><pubDate>Wed, 28 Dec 2022 21:48:04 +0100</pubDate><guid>/docs/infrastructure/architecture/</guid><description>1. Présentation #
+1.1. Disposition #
+1.2. Topologie réseaux (Global) #
+1.3. Topologie réseaux (Interface) #
+2. Webserver Pool #
+Inventaires: 2 intel nuc celeron Roles: Webserver Proxy Reverse-proxy Gestion de certificates Interfaces réseaux: public-network gateway-network 3. Gateway Pool #
+Inventaires: 5 intel nuc celeron Roles: Proxy Reverse-proxy Server DHCP NAT Gateway Kubernetes services Monitoring Interfaces réseaux: gateway-network box-network 4. Database Pool #
+Inventaires: 3 intel nuc celeron Roles: Servers de base de données Interfaces réseaux: box-network 5.</description></item><item><title>Webservers Pool</title><link>/docs/infrastructure/webservers/</link><pubDate>Wed, 28 Dec 2022 21:48:04 +0100</pubDate><guid>/docs/infrastructure/webservers/</guid><description>1. Présentation #
+Webservers pool est le point d&amp;rsquo;entrée public (internet) de l&amp;rsquo;infra. Ce sont des serveurs répliqués ayant les mêmes fonctions. Ces serveurs s&amp;rsquo;interfacent sur 2 réseaux dont le réseau du fournisseur d&amp;rsquo;accès à internet et celui du réseau cluster-gateway. En effet ces machines n&amp;rsquo;ont pas l&amp;rsquo;accès direct au réseau principal de la box proto (box-network) pour des raisons de sécutité. Ces serveurs internet recoivent les rêquêtes en provenance d&amp;rsquo;internet puis les transmettent aux serveurs de proxy (gateway-pool)</description></item><item><title>Gateways Pool</title><link>/docs/infrastructure/gateways/</link><pubDate>Wed, 28 Dec 2022 21:48:04 +0100</pubDate><guid>/docs/infrastructure/gateways/</guid><description>1. Présentation #
+Gateway pool est un ensemble de hosts répliqués qui servent essentiellement de proxy entre gateway-network et box-network mais aussi permettent d&amp;rsquo;exposer les NodeIP du cluster Kubernetes. Ces serveurs sont des noeuds Kubernetes auxquelles les services exposent les pods
+2. Roles #
+Sur chaque serveur est répliqué HAProxy qui route le traffic. Ce tyoe d&amp;rsquo;architecture permet de protèger le réseau principal de la box. C&amp;rsquo;est la police aux frontières entre box-network et cluster-gateway.</description></item><item><title>Databases Pool</title><link>/docs/infrastructure/databases/</link><pubDate>Wed, 28 Dec 2022 21:48:04 +0100</pubDate><guid>/docs/infrastructure/databases/</guid><description>1. Présentation #
+Ce groupe de servers est dédié aux bases de données et possède des ressources matérielles élevées. Les serveurs bases de bases consomment sont relativement gourmands en RAM et processeur d&amp;rsquo;où l&amp;rsquo;équipement en Intel i5 et 16Go de RAM voir 32Go
+2. Roles #
+Les machines de ce groupe sont principalement des serveurs de bases de données. Ils sont répliqués pour assurer la haute disponibilité.
+Emplacement dans le cluster</description></item><item><title>Search Engine Pool</title><link>/docs/infrastructure/search-engine/</link><pubDate>Wed, 28 Dec 2022 21:48:04 +0100</pubDate><guid>/docs/infrastructure/search-engine/</guid><description>1. Présentation #
+Ce groupe de servers est dédié aux bases de données et possède des ressources matérielles élevées. Les serveurs search engines consomment sont relativement gourmands en RAM et processeur d&amp;rsquo;où l&amp;rsquo;équipement en Intel i5 et 16Go de RAM voir 32Go Elasticsearch est principalement utilisé comme noeuds de données et execute les recherches sur ses données pendant que la gestion du cluster Elasticsearch est assurée par les masters pool</description></item><item><title>Masters Pool</title><link>/docs/infrastructure/masters/</link><pubDate>Wed, 28 Dec 2022 21:48:04 +0100</pubDate><guid>/docs/infrastructure/masters/</guid><description>1. Présentation #
+Dans l&amp;rsquo;infra, on dispose de 3 masters qui assurent le clustering de Kubernetes ainsi que les masters applicatifs des autres programmes. Cette cohabitation est nommée Sidecar
+2. Roles #
+Emplacement dans le cluster
+2.1. Sidecar #
+Les applications qui fonctionnent en clustering seront configurées pour placer leurs masters applicatifs au sein de ces serveurs masters d&amp;rsquo;où la notion de sidecar
+3. Networking #
+3.1. Interfaces #
+box-network 4.</description></item><item><title>Supervisor Pool</title><link>/docs/infrastructure/supervisor/</link><pubDate>Wed, 28 Dec 2022 21:48:04 +0100</pubDate><guid>/docs/infrastructure/supervisor/</guid><description>1. Présentation #
+Dans l&amp;rsquo;infra, on dispose de 3 masters qui assurent le clustering de Kubernetes ainsi que les masters applicatifs des autres programmes. Cette cohabitation est nommée Sidecar
+2. Roles #
+Supervisor joue un grand role dans la gestion et le bon fonctionnement de cluster.
+Administration du cluster Kubernetes en interagissant avec le Control plane Stockage des backups via le réseau (GlusterFS) Commande le versionning et la CI avec Gitlab Server Management de l&amp;rsquo;infrastructure avec le logiciel protobox (Ansible) Joue le role de bastion pour l&amp;rsquo;accès ssh Externalisation de git sur un réseau privé destinée aux développeurs Bastion pour vscode 3.</description></item></channel></rss>

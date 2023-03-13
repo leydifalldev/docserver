@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docserver
+  namespace: default
+  labels:
+    app: docserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docserver
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      namespace: default
+      labels:
+        app: docserver
+    spec:
+      containers:
+        - name: docserver
+          image: registry.protobox/protobox1/docserver/docserver:latest
+          imagePullPolicy: "Always"
+          ports:
+          - containerPort: 80

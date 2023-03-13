@@ -1,0 +1,85 @@
+{{ define "main" }}
+<section class="section section-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-4 text-center">
+        <div class="title">Protobox</div>
+        <div class="subtitle">Développez et poussez votre code dans la box, elle se chargera de le déployer</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 offset-md-4 mb-2 text-center">
+        <img src="images/protobox.png">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 offset-md-2 mt-4 mb-4 text-center">
+        <a href="/docs/presentation/presentation/" type="button" width="100px" class="btn btn-primary btn-lg"><span
+            style="font-weight:Bold; margin-left:60px;margin-right:60px">VOIR LE
+            PROJET</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center text-center mt-lg-3">
+    <div class="col-lg-5 bloc-section">
+      <a href="/docs/infrastructure/architecture/">
+        <img src="images/server-icon.svg" width="100px">
+        <h2 class="h4">Infrastructure</h2>
+        <p>Protobox est conçu à base de plusieurs serveurs Intel NUC interconnectés dans le but réaliser un
+          environnement cloud
+        </p>
+      </a>
+    </div>
+    <div class="col-lg-5 bloc-section">
+      <a href="/docs/kubernetes/architecture/">
+        <img src="images/k8s-logo.png" width="100px">
+        <h2 class="h4">Kubernetes</h2>
+        <p class="text-section">Protobox se base principalement sur Kubernetes pour orchestrer ses
+          applications destinés aux utilisateurs finaux</p>
+      </a>
+    </div>
+    <div class="col-lg-5 bloc-section">
+      <a href="/docs/réseaux/networking/">
+        <img src="images/network-logo.svg" width="100px">
+        <h2 class="h4">Réseaux & Sécurité</h2>
+        <p>
+          Sa topologie réseau lui offre un maximun de sécurité et aussi garantit une haute disponibilité de ses
+          services
+        </p>
+      </a>
+    </div>
+  </div>
+
+  <div class="row justify-content-center text-center mt-lg-3">
+    <div class="col-lg-5 bloc-section">
+      <a href="/docs/monitoring/monitor/">
+        <img src="images/monitoring-logo.svg" width="100px">
+        <h2 class="h4">Monitoring</h2>
+        <p>
+          Son système de monitoring permet aux admininstrateurs de surveiller les activités matérielles et
+          applicatives
+        </p>
+      </a>
+    </div>
+    <div class="col-lg-5 bloc-section">
+      <a href="/docs/factory/ci/">
+        <img src="images/factory-logo.svg" width="100px">
+        <h2 class="h4">Factory CI/CD</h2>
+        <p>Grâce au mécanisme GitOps, il permet de déployer automatiquement des applications
+          conteneurisées </p>
+      </a>
+    </div>
+    <div class="col-lg-5 bloc-section">
+      <a href="/docs/authentification/oidc/">
+        <img src="images/auth-icon-1.png" width="100px">
+        <h2 class="h4">OpenID Connect</h2>
+        <p>
+          La fédération d'identité permet aux utilisateurs de s'authentifier aux diverses applications grâce à OpenID
+          Connect
+        </p>
+      </a>
+    </div>
+  </div>
+  </div>
+</section>
+{{ end }}

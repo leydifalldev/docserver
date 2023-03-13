@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: docserver
+  namespace: default
+  labels:
+    app: docserver
+spec:
+  selector:
+    app: docserver
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30163
