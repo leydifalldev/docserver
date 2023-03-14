@@ -10,7 +10,7 @@ menu:
 ---
 ## 1. Présentation
 
-Dans l'infra, on dispose de 3 masters qui assurent le clustering de **Kubernetes** ainsi que les masters applicatifs des autres programmes. Cette cohabitation est nommée **Sidecar**
+Dans l'infra, on dispose de 3 masters qui assurent le clustering de **Kubernetes** ainsi que les masters applicatifs d'autres programmes.
 
 ## 2. Roles
 
@@ -20,10 +20,6 @@ Emplacement dans le cluster
 
 ![master-1](images/master-pool-position.png)
 
-## 2.1. Sidecar
-Les applications qui fonctionnent en clustering seront configurées pour placer leurs masters applicatifs au sein de ces serveurs masters d'où la notion de sidecar
-
-![master-sidecar](images/master-sidecar.png)
 ## 3. Networking
 
 ### 3.1. Interfaces
@@ -31,11 +27,11 @@ Les applications qui fonctionnent en clustering seront configurées pour placer 
 
 ## 4. Volumes
 
-![master-sidecar](images/master-pool-volume.png)
+![master-sidecar](images/master-volumes-cluster.png)
 
 ## 5. Haute disponibilité
 
-La haute disponibilité est mieux décrite dans la section Kubernetes
+La haute disponibilité est mieux décrite dans la section <a href="/docs/kubernetes/architecture/">Kubernetes</a>
 
 ## 6. Sécurité
 - <span style="color:orange;font-weight:Bold">iptables</span> gérés par kubernetes
@@ -52,4 +48,4 @@ La haute disponibilité est mieux décrite dans la section Kubernetes
 - <span style="color:orange;font-weight:Bold">Calico</span>
 
 ## 8. L'installation
-L'installation est décrite en détails dans la section Kubernetes
+L'installation est décrite en détails dans la section <a href="/docs/kubernetes/architecture/">Kubernetes</a>

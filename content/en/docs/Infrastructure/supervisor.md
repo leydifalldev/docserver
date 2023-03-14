@@ -10,7 +10,7 @@ menu:
 ---
 ## 1. Présentation
 
-Dans l'infra, on dispose de 3 masters qui assurent le clustering de **Kubernetes** ainsi que les masters applicatifs des autres programmes. Cette cohabitation est nommée **Sidecar**
+Ce groupe de machines sert principalement à manager le cluster. En effet le framework **Protodeploy** s'execute sur ces hosts et aussi l'API **Spyder** pour surveiller et executer diverses opérations. 
 
 ## 2. Roles
 Supervisor joue un grand role dans la gestion et le bon fonctionnement de cluster.

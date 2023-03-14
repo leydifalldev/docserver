@@ -117,7 +117,7 @@ Pour 3 noeuds la majorité de quorum est 2. En effet c'est le nombre au dessous 
 |   **1**    |    **2**     | 1 | <span style="color:red;font-weight:Bold">Down</span>        |
 
 ### 3.3.2. External Etcd Cluster
-L'externalisation des bases etcd permet d'extendre le quota de la majorité (le nombre d'instance en service) de <span style="color:orange;font-weight:Bold">quorum</span>. Cette architecture a l'avantage d'agir sur la haute disponibilité sans ajouter des masters supplémentaires. Ce model ajoute une couche de sécurité en même temps la maintenance est plus souple.
+L'externalisation des bases etcd permet d'étendre le quota de la majorité (le nombre d'instance en service) de <span style="color:orange;font-weight:Bold">quorum</span>. Cette architecture a l'avantage d'agir sur la haute disponibilité sans ajouter des masters supplémentaires. Ce model ajoute une couche de sécurité en même temps qu'une maintenance plus souple.
 
 Exemple: ETCD avec 3 instances
 
@@ -142,3 +142,4 @@ Notre choix est porté sur le stacked etcd cluster qui en terme de haute disponi
 ### 4. Volumes 
 ![external-etcd-cluster](images/kube-master-volumes.png)
 ## 9. Bilan
+DONE

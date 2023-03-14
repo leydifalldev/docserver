@@ -10,7 +10,7 @@ menu:
 ---
 
 ## 1. Introduction
-La CI est un des piliers de l'usine logiciel. C'est la phase qui construit pour la plupart des cas, le package d'une application. Les applications modernes sont souvent déployer sous forme de conteneurs. Du coup la construction et le stockage de leurs images s'effectuent pendant les étapes de la CI. Pour construire des images conteneurisées, il est impératif d'avoir un dépot git et un registry de conteneurs. Dans ce projet ces 2 éléments sont locaux, l'infrastructure dispose d'un serveur pour les 2 fonctionnalités. Notre choix est porté sur Gitlab Server qui fédére les 2.
+La CI est un des piliers de l'usine logiciel. C'est la phase qui construit pour la plupart des cas, le package d'une application. Les applications modernes sont souvent déployé sous forme de conteneurs. Du coup la construction et le stockage de leurs images s'effectuent pendant les étapes de la CI. Pour construire des images conteneurisées, il est impératif d'avoir un dépot git et un registry de conteneurs. Dans ce projet ces 2 éléments sont locaux, l'infrastructure dispose d'un serveur pour les 2 fonctionnalités. Notre choix est porté sur Gitlab Server qui fédére les 2.
 
 ## 2. Gitlab server
 ![infra](images/gitlab-server-supervisor-1.svg)
@@ -148,6 +148,8 @@ build:
     - docker build -t $CI_REGISTRY_IMAGE/$CI_PROJECT_NAME:latest .
     - docker push $CI_REGISTRY_IMAGE/$CI_PROJECT_NAME:$CI_COMMIT_REF_NAME
     - docker push $CI_REGISTRY_IMAGE/$CI_PROJECT_NAME:latest
+  rules:
+    - if: $CI_COMMIT_TAG != null
 ```
 ### 6.2.2. Update manifests
 Cet étape permet la montée de version de l'image utilisée par **Kubernetes**. En effet lors de cette phase les manifests utilisés sont mise à jour afin qu'ils soient déployés dans le cluster. Pour se faire, le pipeline va solliciter **Kustomize**.
@@ -178,6 +180,8 @@ update_manifests:
     - git add .
     - git commit -m '[skip ci] [ARGOCD] ${CI_COMMIT_MESSAGE}'
     - git push origin $ARGO_TARGET_REVISION
+  rules:
+    - if: $CI_COMMIT_TAG != null
 ```
 ### 6.2.3. Synchronize ArgoCD
 La synchronisation consiste à déclencher indirectement le déploiement en le déléguant à ArgoCD. En effet sur nos applications ArgoCD se synchronisent manuellement (mode auto désactivé). De ce fait, après chaque mise à jour des manifests, le pipeline doit alerter ArgoCD afin que ce dernier puisse les récupérer.
@@ -196,6 +200,8 @@ synchronize_argo:
   script:
     - argocd app get argo-${CI_PROJECT_NAME} --refresh > /dev/null 2>&1
     - argocd app sync argo-${CI_PROJECT_NAME} --assumeYes
+  rules:
+    - if: $CI_COMMIT_TAG != null
 ```
 
 ## Variables

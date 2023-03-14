@@ -10,7 +10,7 @@ menu:
 ---
 
 ## 1. Présentation
-L'installation de l'infrastructure partant de l'adhésion des serveurs au déploiement des applications est gérer par notre <span style="color:orange;font-weight:Bold">framework Protobox</span>. Protobox est framework statefull conçu à base de <span style="color:orange;font-weight:Bold">Ansible</span>. C'est un outil permettant de déployer des infrastructures à partir d'un schéma d'architecture défini dans l'inventaire principale. 
+L'installation de l'infrastructure partant de l'adhésion des serveurs au déploiement des applications est gérée par notre <span style="color:orange;font-weight:Bold">framework Protobox</span>. Protobox est framework statefull conçu à base de <span style="color:orange;font-weight:Bold">Ansible</span>. C'est un outil permettant de déployer des infrastructures à partir d'un schéma d'architecture défini dans l'inventaire principale. 
 
 ## 2. Développement de Protobox
 C'est un projet initié en 2019, aujourd'hui il a atteint une certaine maturité et sous peu de temps sera publique et en <span style="color:orange;font-weight:Bold">OpenSource</span>.

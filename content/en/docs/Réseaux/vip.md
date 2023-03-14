@@ -74,7 +74,7 @@ Cette déclaration ci-dessus crée 2 FloatingIP sur 2 réseaux différents.
 ![infra](images/vip-3.png)
 
 
-- **Configuration généré sur le host-1**
+- **Configuration générée sur le host-1**
 ```json
 -----------------------------------------
 | path: /etc/keepalived/keepalived.conf |
@@ -110,7 +110,7 @@ vrrp_instance network-2-host-1 {
 }
 ```
 
-- **Configuration généré sur le host-2**
+- **Configuration générée sur le host-2**
 
 ```json
 -----------------------------------------

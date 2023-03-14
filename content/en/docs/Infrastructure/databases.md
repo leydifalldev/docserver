@@ -10,7 +10,7 @@ menu:
 ---
 ## 1. Présentation
 Ce groupe de servers est dédié aux bases de données et possède des ressources matérielles élevées.
-Les serveurs bases de bases consomment sont relativement gourmands en RAM et processeur d'où l'équipement en Intel i5 et 16Go de RAM voir 32Go
+Les serveurs de bases de données sont relativement gourmands en RAM et processeur d'où l'équipement en Intel i5 et 16Go de RAM voir 32Go
 
 ![infra](images/infra/intel-i5.png)
 
@@ -30,14 +30,15 @@ Les serveurs de bases de données sont gérés par **Kubernetes** et sont accés
 ## 4. Volumes
 Ces machines sont rattachées au cluster de volumes central du boitier, ainsi les backups sont partagés et préservés en réplication sur d'autre machines
 
-![infra](images/database-pool-archi.png)
+![infra](images/database-pool-volumes.png)
 
 ## 5. Haute disponibilité
 
 ![infra](images/database-pool-ha.png)
 
 ## 6. Sécurité
-- iptables (à définir)
+- **iptables (à définir)**
+- **VirtualService (Service Mesh)**
 
 ## 7. Applications
 
@@ -45,6 +46,6 @@ Ces machines sont rattachées au cluster de volumes central du boitier, ainsi le
 - <span style="color:orange;font-weight:Bold">Redis (à installer)</span>
 
 ## 8. Installation
-Ces hosts ne sont pas encore installés du fait du nombre de machines disponibles mais selon mis en place progressivement. Pour le moment postgresql est installé sur les machines gateway le temps d'achat de ces machines
+Ces hosts ne sont pas encore installés du fait du nombre de machines disponibles mais selon mis en place progressivement. Pour le moment postgresql est installé sur les machines gateway le temps d'acquérir ces serveurs physiques
 
 ## 9. Bilan

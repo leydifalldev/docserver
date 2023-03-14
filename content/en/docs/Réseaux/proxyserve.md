@@ -12,49 +12,49 @@ weight: 3
 ### 1. Présentation
 
 Proxiserver est la combinaison des webservers et gateways qui joue un role fondamental dans le système.
-Les webservers n'ont pas accès direct aux réseaux et services. Pour exposer les applications sur internet ou autres réseaux externes, les serveurs web doivent interroger les gateways. 
+Les webservers n'ont pas accès direct au réseau principal et services de l'infrastructure. Pour exposer les applications sur internet ou autres réseaux externes, les serveurs web doivent interroger les services via les gateways. 
 
 ### 2. Architecture et Networking
 
-![infra](images/proxiserver-network-archi.png)
+![infra](images/gateway-pool-network.png)
 
 Les webservers et gateways communiquent dans un réseau privé particulier et sont les seuls à y accéder. C'est choix conditionné par la gestion du certificat qu'on étudiera dans le prochain chapitre.
 
 ### 3. Exemple de configuration du routage
 
 ``` yaml
-  prometheus:
-    gateway:
-      mode: http
-      address: "*"
-      port: 9090
-      destination:
-        addresses: 
-          - name: supervisor-1
-            address: 192.168.1.6
-            port: 9090
-        balance: roundrobin
-        options:
-          - httplog
-    webserver:
-      - location: /prometheus/
-        params:
-          proxy_pass:
-            values: "http://{{ gateway_external_vip }}:9090/prometheus/"
+prometheus:
+  gateway:
+    mode: http
+    address: "*"
+    port: 9090
+    destination:
+      addresses: 
+        - name: supervisor-1
+          address: 192.168.1.6
+          port: 9090
+      balance: roundrobin
+      options:
+        - httplog
+  webserver:
+    - location: /prometheus/
+      params:
+        proxy_pass:
+          values: "http://{{ gateway_external_vip }}:9090/prometheus/"
 
-  grafana:
-    gateway:
-      mode: http
-      address: "*"
-      port: 3000
-      destination:
-        addresses: 
-          - name: supervisor-1
-            address: 192.168.1.6
-            port: 3000
-        balance: roundrobin
-        options:
-          - httplog
+grafana:
+  gateway:
+    mode: http
+    address: "*"
+    port: 3000
+    destination:
+      addresses: 
+        - name: supervisor-1
+          address: 192.168.1.6
+          port: 3000
+      balance: roundrobin
+      options:
+        - httplog
 ```
 Configuration HAProxy générée par le framework protobox
 
@@ -81,6 +81,6 @@ Ce mode renforce considérablement la sécurité en utilisant 2 encryptages diff
 
 ### 5. Choix Pattern pour le proxiserver
 #### 5.1. Communication HTTP/HTTPS
-![infra](images/proxiserver/proxiserver-2.png)
+![infra](images/archi-tls.png)
 
 #### 5.2. Interfaçage réseau

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubernetes on</title><link>/docs/kubernetes/</link><description>Recent content in Kubernetes on</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0000</lastBuildDate><atom:link href="/docs/kubernetes/index.xml" rel="self" type="application/rss+xml"/><item><title>Architecture</title><link>/docs/kubernetes/architecture/</link><pubDate>Wed, 28 Dec 2022 21:48:04 +0100</pubDate><guid>/docs/kubernetes/architecture/</guid><description>1. Présentation #
 Le cluster kubernetes est la partie centrale de l&amp;rsquo;infrastructure.
 Dans l&amp;rsquo;infrastructure, on dispose 2 groupes d&amp;rsquo;applications:
-Les applications qui joue le role de gestion du cluster Les applications qui fonctionnent au sein du cluster Kubernetes pour des usages externes 2. Inventaire #
+Les applications qui jouent le role de gestion du cluster Les applications qui fonctionnent au sein du cluster Kubernetes pour des usages externes 2. Inventaire #
 Groupes du cluster
 master-pool (3 hosts) datase-pool (3 hosts) search-engine-pool (3 hosts) node-pool (2 hosts) gateway-pool (3 hosts) supervisor (1 host) 3. Architecture #
 4. Applications #
@@ -13,4 +13,4 @@ Ref: kubernetes documentation
 Composant sur le master qui expose l&amp;rsquo;API Kubernetes. Il s&amp;rsquo;agit du front-end pour le plan de contrôle Kubernetes.
 Il est conçu pour une mise à l&amp;rsquo;échelle horizontale, ce qui veut dire qu&amp;rsquo;il met à l&amp;rsquo;échelle en déployant des instances supplémentaires.</description></item><item><title>Services</title><link>/docs/kubernetes/services/</link><pubDate>Wed, 28 Dec 2022 21:48:04 +0100</pubDate><guid>/docs/kubernetes/services/</guid><description>1. Types de service #
 Les services kubernetes servent principalement à exposer les déploiements kubernetes. On distingue 3 types de services dont:
-ClusterIP Ce type de service est utilisé pour les communications internes entre les différents pods NodeIP Les NodeIP contrairement aux ClusterIP permettemt d&amp;rsquo;externaliser les services. Ils exposent leur port à tous les nodes du cluster LoadBalancer Les loadBalancers sont plus ou moins similaires aux NodeIP mais ne sont fonctionnels qu&amp;rsquo;à la présence d&amp;rsquo;un controleur complémentaire qui leur attribut un IP.</description></item></channel></rss>
+ClusterIP Ce type de service est utilisé pour les communications internes entre les différents pods NodeIP Les NodeIP contrairement aux ClusterIP permettent d&amp;rsquo;externaliser les services. Ils exposent leur port à tous les nodes du cluster LoadBalancer Les loadBalancers sont plus ou moins similaires aux NodeIP mais ne sont fonctionnels qu&amp;rsquo;à la présence d&amp;rsquo;un controleur complémentaire qui leur attribut une IP.</description></item></channel></rss>

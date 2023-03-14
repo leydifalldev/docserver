@@ -11,7 +11,7 @@ menu:
 ## 1. Présentation
 Le server DHCP est un des élements fondamentaux de l'infra. En effet l'ajout de machine passe par l'attribution d'IP et ainsi la machine nouvellement ajoutée est identifiée comme composant de la box.\
 Le framework protobox installe dnsmasq (server DNS/DHCP léger) sur toutes les machines classées supervisor-pool.
-Dnsmasq ne fonctionne pas en clustering même répliqué, sur chaque machine ce serveur fonctionne en indépendammant. En effet lors de la connexion en réseau d'une nouvelle machine ou celles qui ont un DHCP actif sur leurs paramètres réseau, elles lancent un signal pour une demande d'attribution IP alors le premier server DHCP recevant l'appel répond systematiquement.
+Dnsmasq ne fonctionne pas en clustering même répliqué, sur chaque machine ce serveur fonctionne indépendammant. Une machine qui intégre le réseau lance un signal pour une demande d'attribution IP ainsi le premier server DHCP recevant l'appel répond systematiquement.
 
 ![infra](images/servers-dhcp.png)
 
@@ -70,19 +70,19 @@ dhcp-host={{ hostvars[host]['networks_interfaces'][interface]['ether'] }},{{ hos
 ### 2.2. Activation du DHCP Client pour une demande automatique d'IP
 
 ``` yaml
-    host-1:
-      arch: x86_64
-      os: ubuntu_22.04
-      model: nuc
-      ansible_host: 192.168.X.XX
+host-1:
+  arch: x86_64
+  os: ubuntu_22.04
+  model: nuc
+  ansible_host: 192.168.X.XX
+  ip: 192.168.X.XX
+  access_ip: 192.168.X.XX
+  roles:
+    - gateway
+  networks_interfaces:
+    box-network:
+      dhcp: true <-----------------
+      network_manager: netplan
       ip: 192.168.X.XX
-      access_ip: 192.168.X.XX
-      roles:
-        - gateway
-      networks_interfaces:
-        box-network:
-          dhcp: true <-----------------
-          network_manager: netplan
-          ip: 192.168.X.XX
-          ether: 88:ae:dd:XX:XX:XX
+      ether: 88:ae:dd:XX:XX:XX
 ```

@@ -28,7 +28,7 @@ Dans le logiciel protobox, le role factory/argocd permet de déployer ArgoCD dan
     ...
 ```
 ### 2.2. Configuration d'application
-Pour instaurer le mécanisme de déploiement d'une application dans le système ArgoCD, il ajouter créer l'objet Kubernetes de type Application. La déclaration s'effectue dans le repertoire suivant pour chaque projet:
+Pour instaurer le mécanisme de déploiement d'une application dans le système ArgoCD, il faut ajouter créer l'objet Kubernetes de type Application. La déclaration s'effectue dans le repertoire suivant pour chaque projet:
 
 ```
 factory > CD > argo > application.yml
@@ -63,7 +63,10 @@ dial tcp: lookup git.protobox on 169.254.25.10:53: no such host
 
 Pour remédier à ce problème 2 pistes s'offrent à nous (pour le moment en tout cas):
 
-**1e piste**. Combiner CoreDNS à consul ou DNSMASQ pour la résolution DNS de nos repositories git.
+**1e piste**
+Créer un **VirtualService** au sein de **Istio** pour router le traffic vers Gitlab Server
+
+**2e piste**. Combiner CoreDNS à consul ou DNSMASQ pour la résolution DNS de nos repositories git.
 
 ```
 ------------------
@@ -111,4 +114,4 @@ data:
 +   }
 ```
 
-**2e piste** Cette piste consiste à forcer /etc/hosts de la machine hôte dans le conteneur argocd-server
+**3e piste** Cette piste consiste à forcer /etc/hosts de la machine hôte dans le conteneur argocd-server

@@ -12,17 +12,17 @@ menu:
 Gateway pool est un ensemble de hosts répliqués qui servent essentiellement de proxy entre gateway-network et box-network mais aussi permettent d'exposer les NodeIP du cluster Kubernetes. Ces serveurs sont des noeuds Kubernetes auxquelles les services exposent les pods
 
 ## 2. Roles
-Sur chaque serveur est répliqué HAProxy qui route le traffic. Ce tyoe d'architecture permet de protèger le réseau principal de la box.
-C'est la police aux frontières entre **box-network** et **cluster-gateway**. Un service ou API n'est utilisé par les webserveurs seulement s'il est déclaré sur le gateway
+Sur chaque serveur est répliqué HAProxy qui route le traffic. Ce type d'architecture permet de protèger le réseau principal de la box.
+C'est la police aux frontières entre **box-network** et **cluster-gateway**. Un service ou API n'est accessible par les webserveurs seulement s'il est déclaré sur le gateway
 
 ![infra](images/gateway-pool-archi.png)
 
-Gateway Pool est scindé en 2 groupe:
+Gateway Pool est scindé en 2 groupes:
 
 ## 3. kube-gateway-pool
 ### 3.1. Roles
 Ce groupe est un composant du cluster Kubernetes permettant à ce dernier d'exposer ses services.
-En effet l'exposition des services du cluster aux webserver passe par ce groupe de machines et uniquement.
+En effet l'exposition des services du cluster aux webservers passe par ce groupe de machines et uniquement.
 
 ![infra](images/kube-gateway-archi.jpg)
 
@@ -38,11 +38,11 @@ En effet l'exposition des services du cluster aux webserver passe par ce groupe 
 Pour former le groupe, il faut le déclarer dans l'inventory principale
 
 ```yaml
-    kube_gateway_pool:
-      hosts:
-        gateway-1:
-        gateway-2:
-        gateway-3:
+kube_gateway_pool:
+  hosts:
+    gateway-1:
+    gateway-2:
+    gateway-3:
 ```
 ### 3.5. Routage
 Les services Kubernetes ne peuvent franchir les gateways que s'ils sont déclarés dans :
@@ -53,19 +53,19 @@ Déclaration:
 - inventory principale
 
 ``` yaml
-    app:
-      arogcd:
-        port: XXXXX
-      pgadmin4:
-        port: XXXXX
-      dash:
-        port: XXXXX
-      keycloak:
-        port: XXXXX
-      kibana:
-        port: XXXXX
-      v-admin:
-        port: XXXXX
+app:
+  arogcd:
+    port: XXXXX
+  pgadmin4:
+    port: XXXXX
+  dash:
+    port: XXXXX
+  keycloak:
+    port: XXXXX
+  kibana:
+    port: XXXXX
+  v-admin:
+    port: XXXXX
 ```
 
 - Declaration dans group vars (Magics variables)
@@ -176,26 +176,26 @@ Ce groupe sert principalement:
   - <span style="color:#FA6400">**box-network**</span>
   
 ### 3.3. Volumes
-![infra](images/gateway-shared-volume.png)
+![infra](images/nat-gateway-shared-volume.png)
 ### 3.4. Installation 
 ```yaml
-    nat_gateway_pool:
-      vars:
-        output_interface: gateway-network
-        input_interface: box-network
-        vips:
-          box-network:
-            virtual_router_id: 5
-            vip: 192.168.1.254
-      hosts:
-        gateway-4:
-          box-network:
-            priority: 200
-            state: MASTER
-        gateway-5:
-          box-network:
-            priority: 100
-            state: BACKUP
+nat_gateway_pool:
+  vars:
+    output_interface: gateway-network
+    input_interface: box-network
+    vips:
+      box-network:
+        virtual_router_id: 5
+        vip: 192.168.1.254
+  hosts:
+    gateway-4:
+      box-network:
+        priority: 200
+        state: MASTER
+    gateway-5:
+      box-network:
+        priority: 100
+        state: BACKUP
 ```
 ### 3.5. Routage
 Chaque machine de nat-gateway-pool a principalement comme role de router le trafic vers les services fonctionnels du boitier, c'est à dire les applications servant à manager ou surveiller le bon fonctionnement du cluster. Parmi les application on peut citer **Grafana**, **Prometheus**, **Consult**, **Gitlab**

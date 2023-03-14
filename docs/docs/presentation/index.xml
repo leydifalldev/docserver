@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Presentation on</title><link>/docs/presentation/</link><description>Recent content in Presentation on</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0000</lastBuildDate><atom:link href="/docs/presentation/index.xml" rel="self" type="application/rss+xml"/><item><title>Presentation</title><link>/docs/presentation/presentation/</link><pubDate>Wed, 28 Dec 2022 21:48:04 +0100</pubDate><guid>/docs/presentation/presentation/</guid><description>1. Introduction #
-Protobox est un projet on-premise cloud initié en 2020. En effet Protobox est un nano datacenter cloud permettant d&amp;rsquo;héberger des containers d&amp;rsquo;applications et orchestré par la technologie Kubernetes. Protobox est également un framework maison à base de la technologie Ansible permettant de manager totalement l&amp;rsquo;infrastructure et d&amp;rsquo;automatiser les actions souhaitées.
-Elle a été conçue avec des normes de haute disponibilité et sécurité ce qui fait que son usage reste polyvalent (Environnement de preprod, test dev ou production)</description></item><item><title>Historique</title><link>/docs/presentation/historique/</link><pubDate>Wed, 28 Dec 2022 21:48:04 +0100</pubDate><guid>/docs/presentation/historique/</guid><description>1. Version 1 #
+Protobox est un projet on-premise cloud initié en 2019. En effet Protobox est un nano datacenter cloud permettant d&amp;rsquo;héberger des containers d&amp;rsquo;applications et orchestré par la technologie Kubernetes. Protobox est également un framework maison à base de la technologie Ansible permettant de manager totalement l&amp;rsquo;infrastructure et d&amp;rsquo;automatiser les actions souhaitées.
+Elle a été conçue avec des normes de haute disponibilité et sécurité rendant son usage polyvalent (Environnement de preprod, test dev ou production)</description></item><item><title>Historique</title><link>/docs/presentation/historique/</link><pubDate>Wed, 28 Dec 2022 21:48:04 +0100</pubDate><guid>/docs/presentation/historique/</guid><description>Version actuelle #
+Inventaire: 9 Intel NUC
+Objectif: 18 Intel NUC (N&amp;rsquo;empêche que les applications attentues pour les 9 restants sont déjà sur les 9 existants le temps de les compléter)
+1. Version 1 #
 1.1 Infra #
+Inventaire: 4 Raspberry PI 4
 2. Version 2 #
 2.1 Infra #
+Inventaire: 7 Raspberry PI 4
 2.2 Architecture infra #
 3. Version 3 #
+Inventaire: 9 Raspberry PI 4
 4. Version 4 #
-4.1. Box #
-4.2. Architecture Infra #
-4.3. Deploiement applications #</description></item><item><title>Objectif</title><link>/docs/presentation/objectif/</link><pubDate>Wed, 28 Dec 2022 21:48:04 +0100</pubDate><guid>/docs/presentation/objectif/</guid><description>Ce projet est conçu pour des usages professionnelles notamment des services applicatifs. Ses usages sont diversifiés partant d&amp;rsquo;un environnement de dev à la production. Dans une infrastructure IT, les performances, la sécurité et la haute disponibilité sont des facteurs qui définissent la qualité de service.
+4.</description></item><item><title>Objectif</title><link>/docs/presentation/objectif/</link><pubDate>Wed, 28 Dec 2022 21:48:04 +0100</pubDate><guid>/docs/presentation/objectif/</guid><description>Ce projet est conçu pour des usages professionnels notamment des services applicatifs. Ses usages sont diversifiés partant d&amp;rsquo;un environnement de dev à la production. Dans une infrastructure IT, les performances, la sécurité et la haute disponibilité sont des facteurs qui définissent la qualité de service.
 1. Sécurité #
-La sécurité d&amp;rsquo;un système informatique repose sur des principes, conventions et bonnes pratiques. Dans un infrastructure IT les unités sont interconnectées et se transmettent probablement des informations.</description></item></channel></rss>
+La sécurité d&amp;rsquo;un système informatique repose sur des principes, conventions et bonnes pratiques. Dans une infrastructure IT les unités sont interconnectées et se transmettent probablement des informations.</description></item></channel></rss>

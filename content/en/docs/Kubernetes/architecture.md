@@ -13,7 +13,7 @@ menu:
 Le cluster kubernetes est la partie centrale de l'infrastructure.
 
 Dans l'infrastructure, on dispose 2 groupes d'applications:
- - Les applications qui joue le role de gestion du cluster
+ - Les applications qui jouent le role de gestion du cluster
  - Les applications qui fonctionnent au sein du cluster Kubernetes pour des usages externes
 
 ## 2. Inventaire
@@ -45,7 +45,7 @@ Groupes du cluster
   - Calico
 
 ## 5. Installation
-L'installation du cluster est assuré par 3 roles ansibles définis dans le framework protobox
+L'installation du cluster est assuré par 3 roles ansibles définis dans le framework protodeploy
 
 ```yaml
 - name: Install master pool
@@ -88,14 +88,14 @@ L'installation du cluster est assuré par 3 roles ansibles définis dans le fram
 ### Etapes
 <span style="color:orange;font-weight:Bold">1.</span> Usage du role <span style="color:orange;font-weight:Bold">kubernetes/kubespray-init</span><br/> permet de cloner kubespray (module offciel ansible pour mettre en place un cluster kubernetes) et l'intégrer également dans le framework protobox
 
-<span style="color:orange;font-weight:Bold">2.</span> Installation du <span style="color:orange;font-weight:Bold">Load-balancer</span> <br/>pour s'interfacer avec apiserver
-Le control plane est répliqué sur 3 machines (master-pool) et expose l'api-server. La communication via
+<span style="color:orange;font-weight:Bold">2.</span> Installation du <span style="color:orange;font-weight:Bold">Load-balancer</span> <br/>pour s'interfacer avec apiserver,
+le control plane est répliqué sur 3 machines (master-pool) et expose l'api-server. La communication avec le control plane s'effectue via
 un load-balancer répliqué sur chaque master au front de l'api. Pour cela 2 outils permettent cette configuration.
 - <span style="color:orange;font-weight:Bold">KeepAlived</span> pour maintenir un floatingIP
 - <span style="color:orange;font-weight:Bold">HAProxy</span> pour la mise en place d'un load-balancer
 
 <span style="color:orange;font-weight:Bold">3.</span> Execution de <span style="color:orange;font-weight:Bold">Kubespray</span><br/>
-Kubespray se base sur l'inventory pour parametrer l'installation
+Kubespray se base sur l'inventory pour paramétrer l'installation
 ```yaml
 --------------------------------------------------------
 path: inventories/protobox/main.yml   
@@ -253,9 +253,11 @@ crio_registry_auth:
 Ce module va effectuer des configurations supplémentaires telque l'intallation de kubectl, kubeadm etc
 
 <span style="color:orange;font-weight:Bold">5.</span> Execution de <span style="color:orange;font-weight:Bold">kubernetes/kubectl-cni</span><br/>
-Ce role est utilisé par protobox pour installer le réseau des pods de kubernetes
+Ce role est utilisé par protodeploy pour installer le réseau des pods de kubernetes
 
 <span style="color:orange;font-weight:Bold">6.</span> Execution de <span style="color:orange;font-weight:Bold">kubernetes/dashboard</span>
 
 
 ## 6. Bilan
+
+DONE

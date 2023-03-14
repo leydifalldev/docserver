@@ -15,12 +15,12 @@ Les services kubernetes servent principalement à exposer les déploiements kube
 - <span style="color:orange;font-weight:Bold">ClusterIP</span> <br/>
   Ce type de service est utilisé pour les communications internes entre les différents pods
 - <span style="color:orange;font-weight:Bold">NodeIP</span> <br/>
-  Les NodeIP contrairement aux ClusterIP permettemt d'externaliser les services. Ils exposent leur port à tous les nodes du cluster
+  Les NodeIP contrairement aux ClusterIP permettent d'externaliser les services. Ils exposent leur port à tous les nodes du cluster
 - <span style="color:orange;font-weight:Bold">LoadBalancer</span> <br/>
-  Les loadBalancers sont plus ou moins similaires aux NodeIP mais ne sont fonctionnels qu'à la présence d'un controleur complémentaire qui leur attribut un IP. En effet les loadbalancers font une requête auprès d'un controleur dédié à l'attribution d'un PI.
+  Les loadBalancers sont plus ou moins similaires aux NodeIP mais ne sont fonctionnels qu'à la présence d'un controleur complémentaire qui leur attribut une IP. En effet les loadbalancers font une requête auprès d'un controleur dédié à l'attribution d'un IP.
 
 ## 2. Ingress
-Un ingress est un élément de kubernetes qui joue le role de serveur web et route le trafic vers d'autres services afin en se basant sur des endpoints. Les ingress sont gérés par un ou des controleur appelé controleur d'ingress qui maintiennent ce service.
+Un ingress est un élément de kubernetes qui joue le role de serveur web et route le trafic vers d'autres services afin en se basant sur des endpoints. Les ingress sont gérés par un ou des controleurs appelés controleur d'ingress qui maintiennent ce service.
 
 <span style="color:orange;font-weight:Bold">Cas d'usage</span>:
 Lorsqu'on expose directement le cluster vers l'exterieur c'est à dire que les requêtes passent directement par point d'entrée du cluster, ce type de service est adapté et oriente les demandes.
@@ -30,24 +30,24 @@ La réplication de l'ingress n'est pas possible (à ma connaissance). En effet l
 
 ![infra](images/kubernetes/kube-arch-5.png)
 
-## 2. NodeIP
+## 3. NodeIP
 Les NodeIP ont l'avantage de répliquer nativement un service. En effet il expose un service sur toutes les machines du cluster.
 
 <span style="color:orange;font-weight:Bold">Cas d'usage</span>:
 Notre cluster actuel utilise ce type de service. En effet l'infrastructure intégre au front (avant le réseau du cluster) un serveur web et un reverse-proxy dans le même réseau privée que les noeuds (gateway-pool) kubernetes, il serait préférable de ne pas réproduire un autre serveur web dans le cluster. Puisqu'un service est répliqué sur toutes les machines de kubernetes, le nginx au front va appliquer un loadbalance sur ces dernières. En terme de sécurité, la communication s'effectue dans un réseau cloisonné, nos noeuds ne sont pas accessible depuis l'exterieur.
 
-## 3. Architecture
+## 4. Architecture
 Le cluster kubernetes est isolé des serveurs web (<span style="color:orange;font-weight:Bold">Nginx</span>) et communique à travers un reverse-proxy (<span style="color:orange;font-weight:Bold">HAProxy</span>). Cela offre une couche de sécurité importante.
 
 ![kube-service-archi](images/kube-service-archi.png)
 
 ![kube-service-archi-2](images/kube-service-archi-2.png)
 
-## 4. Haute disponibilité
+## 5. Haute disponibilité
 
 ![infra](images/kubernetes/kube-arch-6.png)
 
-## 7. Externalisation d'un service
+## 6. Externalisation d'un service
 Pour exposer un service sur internet, suivre les étapes suivantes:
 
 <span style="color:orange;font-weight:Bold">1. </span> Définir et applique le manifest kubernetes du service<br/>
